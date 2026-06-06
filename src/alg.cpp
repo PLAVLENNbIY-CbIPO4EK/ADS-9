@@ -9,12 +9,12 @@
 
 namespace {
 
-void walk(PMTree::Node* now,
+void dfs(PMTree::Node* now,
           std::vector<char>* way,
-          std::vector<std::vector<char>>* ans) {
+          std::vector<std::vector<char>>* res) {
   if (now->sons.empty()) {
     if (!way->empty()) {
-      ans->push_back(*way);
+      res->push_back(*way);
     }
 
     return;
@@ -23,7 +23,7 @@ void walk(PMTree::Node* now,
   for (size_t i = 0; i < now->sons.size(); i++) {
     way->push_back(now->sons[i]->ch);
 
-    walk(now->sons[i], way, ans);
+    dfs(now->sons[i], way, res);
 
     way->pop_back();
   }
@@ -42,12 +42,12 @@ int fact(int n) {
 }  // namespace
 
 std::vector<std::vector<char>> getAllPerms(PMTree& tree) {
-  std::vector<std::vector<char>> ans;
+  std::vector<std::vector<char>> res;
   std::vector<char> way;
 
-  walk(tree.getTop(), &way, &ans);
+  dfs(tree.getTop(), &way, &ans);
 
-  return ans;
+  return res;
 }
 
 std::vector<char> getPerm1(PMTree& tree, int num) {
@@ -69,7 +69,7 @@ std::vector<char> getPerm2(PMTree& tree, int num) {
     return {};
   }
 
-  std::vector<char> ans;
+  std::vector<char> res;
 
   num--;
 
@@ -78,12 +78,12 @@ std::vector<char> getPerm2(PMTree& tree, int num) {
 
     int pos = num / block;
 
-    ans.push_back(now->sons[pos]->ch);
+    res.push_back(now->sons[pos]->ch);
 
     now = now->sons[pos];
 
     num %= block;
   }
 
-  return ans;
+  return res;
 }
