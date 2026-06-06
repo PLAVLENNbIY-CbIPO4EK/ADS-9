@@ -45,7 +45,7 @@ std::vector<std::vector<char>> getAllPerms(PMTree& tree) {
   std::vector<std::vector<char>> res;
   std::vector<char> way;
 
-  dfs(tree.getTop(), &way, &ans);
+  dfs(tree.getTop(), &way, &res);
 
   return res;
 }
