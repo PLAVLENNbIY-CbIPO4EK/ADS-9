@@ -42,9 +42,12 @@ int main() {
     std::vector<char> p2 = getPerm2(tree, num);
     auto t5 = std::chrono::high_resolution_clock::now();
 
-    int64_t timeAll = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
-    int64_t timeP1 = std::chrono::duration_cast<std::chrono::microseconds>(t4 - t3).count();
-    int64_t timeP2 = std::chrono::duration_cast<std::chrono::microseconds>(t5 - t4).count();
+    int64_t timeAll = std::chrono::duration_cast<
+        std::chrono::microseconds>(t2 - t1).count();
+    int64_t timeP1 = std::chrono::duration_cast<
+        std::chrono::microseconds>(t4 - t3).count();
+    int64_t timeP2 = std::chrono::duration_cast<
+        std::chrono::microseconds>(t5 - t4).count();
 
     fout << n << " "
          << timeAll << " "
